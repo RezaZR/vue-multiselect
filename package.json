@@ -114,5 +114,6 @@
     "dist",
     "src",
     "index.d.ts"
-  ]
+  ],
+  "dependencies": {}
 }
