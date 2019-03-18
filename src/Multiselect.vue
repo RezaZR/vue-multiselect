@@ -63,22 +63,26 @@
           @keypress.enter.prevent.stop.self="addPointerElement($event)"
           @keydown.delete.stop="removeLastElement()"
           class="multiselect__input"/>
-        <span
-          v-if="isSingleLabelVisible && isBlack"
-          class="multiselect__single multiselect__single__black"
-          @mousedown.prevent="toggle">
-          <slot name="singleLabel" :option="singleValue">
-            <template>{{ currentOptionLabel }}</template>
-          </slot>
-        </span>
-        <span
-          v-if="isSingleLabelVisible"
-          class="multiselect__single"
-          @mousedown.prevent="toggle">
-          <slot name="singleLabel" :option="singleValue">
-            <template>{{ currentOptionLabel }}</template>
-          </slot>
-        </span>
+        <div v-if="isBlack">
+          <span
+            v-if="isSingleLabelVisible"
+            class="multiselect__single multiselect__single--black"
+            @mousedown.prevent="toggle">
+            <slot name="singleLabel" :option="singleValue">
+              <template>{{ currentOptionLabel }}</template>
+            </slot>
+          </span>
+        </div>
+        <div v-else>
+          <span
+            v-if="isSingleLabelVisible"
+            class="multiselect__single"
+            @mousedown.prevent="toggle">
+            <slot name="singleLabel" :option="singleValue">
+              <template>{{ currentOptionLabel }}</template>
+            </slot>
+          </span>
+        </div>
         <span
           v-if="isPlaceholderVisible"
           class="multiselect__placeholder"
